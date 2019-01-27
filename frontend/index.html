@@ -1,0 +1,150 @@
+<html ng-app="cognitevApp">
+<head>
+  <title>ngTodo</title>
+</head>
+<body>
+    <ng-view></ng-view>
+
+    <!-- Libraries -->
+    <script src="angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+    <script src="table_comp.js"></script>
+    <link rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script
+      src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script
+      src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+      <!-- components match only elements -->
+    <div ng-controller="tableCtrl as ctrl">
+      <form ng-submit="ctrl.onSubmitForm()">
+      <div>
+        <p> Parameters: </p> 
+      </div>
+
+      <table class="table">
+        <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+        <th>Description</th>
+        <th>Parameter Type</th>
+        <th>Data Type</th>
+      </tr>
+
+      <tr>
+        <td>first_name</td>
+        <td>
+        <input type="text" ng-model="ctrl.fName" name="fName" required/>
+        </td>
+        <td> </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+       <tr>
+        <td>last_name</td>
+        <td>
+        <input type="text" ng-model="ctrl.lName" name="lName" required/>
+        </td>
+        <td> </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+       <tr>
+        <td>country_code</td>
+        <td>
+        <input type="text" ng-model="ctrl.code" name="code" required/>
+        </td>
+        <td> </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+       <tr>
+        <td>phone_number</td>
+        <td>
+        <input type="text" ng-model="ctrl.phone" name="phone" pattern="^\+?[1-9]\d{1,14}$" required/>
+        </td>
+        <td> Must be in E. 164 format i.e.
+          *xxxxxxxxxxx </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+       <tr>
+        <td>gender</td>
+        <td>
+        <select name="singleSelect" ng-model="ctrl.gender" required>
+          <option ng-repeat="option in ctrl.genders" value="{{option}}">{{option}}</option>
+      </select>
+        </td>
+        <td> </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+       <tr>
+        <td>birthday</td>
+        <td>
+        <input type="text" ng-model="ctrl.bDate" name="date" required/>
+        </td>
+        <td> </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+       <tr>
+        <td>avatar</td>
+        <td>
+        <input type="file" name="file" id="file" required/>
+        </td>
+        <td> Supported content types 
+          jpg, jpeg, png </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+       <tr>
+        <td>email</td>
+        <td>
+        <input type="text"  name="email" ng-model="ctrl.email"/>
+        </td>
+        <td> </td>
+        <td>formData</td>
+        <td>string</td>
+      </tr>
+
+    </table>
+
+      <input type="submit" value="Submit" class="btn btn-primary"/> 
+
+  </form>  
+
+  <br>
+
+  <div>
+    <p> Task 2 </p>
+  </div>
+
+    <div ng-controller="tableCtrl as ctrl">
+      <label>
+        Phone:
+      </label>
+      <input type="text" ng-model="ctrl.phone2" required/>
+      <br>
+      <label>
+        Password:
+      </label>
+      <input type="password" ng-model="ctrl.password" required/>
+      <br>
+       <input type="button" value="Generate" ng-click = "ctrl.generateToken()" class="btn btn-warning"/>
+       <br>
+       <label>
+        Your Token:
+      </label>
+       <textarea> {{ctrl.token}} </textarea>
+    </div>
+</body>
+</html>
